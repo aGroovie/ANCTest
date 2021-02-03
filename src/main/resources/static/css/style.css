@@ -38,12 +38,26 @@ body {
 
 .signup-form {
     font-family: "Roboto", sans-serif;
-    width:650px;
+    width:250px;
+    margin:30px auto;
+    background:linear-gradient(to right, #ffffff 0%, #fafafa 50%, #ffffff 99%);
+    border-radius: 10px;
+}
+.edit-form {
+    font-family: "Roboto", sans-serif;
+    width:500px;
     margin:30px auto;
     background:linear-gradient(to right, #ffffff 0%, #fafafa 50%, #ffffff 99%);
     border-radius: 10px;
 }
 
+.login-form {
+    font-family: "Roboto", sans-serif;
+    width:400px;
+    margin:30px auto;
+    background:linear-gradient(to right, #ffffff 0%, #fafafa 50%, #ffffff 99%);
+    border-radius: 10px;
+}
 .menu {
     width: 1068px;
     background-color: #333;

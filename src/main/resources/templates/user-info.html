@@ -22,7 +22,7 @@
     </ul>
 </div>
 
-<form сlass="signup-form" th:object="${user}" th:action="@{'/admin/updateUserWithId/' + ${id}}" method="post">
+<form class="signup-form" th:object="${user}" th:action="@{'/admin/updateUserWithId/' + ${id}}" method="post">
     <div class="form-header">
         <h1> Edit User</h1>
     </div>
@@ -46,7 +46,7 @@
     </select>
     <label> Martial Status</label>
     <select name="MaritalStatus" class="form-input">
-        <option value="" selected>----SELECT MARITAL STATUS----</option>
+        <option value="" selected>----MARITAL STATUS----</option>
         <option th:each="maritalStatus :${T(drugstore.ukraine.enums.MaritalStatus).values()}"
         th:value="${maritalStatus}" th:text="${maritalStatus}"></option>
     </select>
@@ -59,7 +59,6 @@
         </option>
     </select>
     <input class="logout-button" type="submit" value="save">
-
 </form>
 </body>
 </html>

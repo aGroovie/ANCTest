@@ -1,7 +1,7 @@
 package drugstore.ukraine.enums;
 
 public enum EducationType {
-    HIGH_SCHOOL("HIGH SCHOOL"),
+    HIGH_SCHOOL("HIGH_SCHOOL"),
     UNIVERSITY("UNIVERSITY"),
     COLLEGE("COLLEGE");
 

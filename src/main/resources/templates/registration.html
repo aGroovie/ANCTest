@@ -48,13 +48,13 @@
     <p th:if="${#fields.hasErrors('itNumber')}" th:errors="*{itNumber}">Second name must be  {max} length! </p>
     <label> Education</label>
     <select name="EducationType" class="form-input">
-        <option value="" selected>----SELECT EDUCATION----</option>
+        <option value="" selected>---- SELECT EDUCATION----</option>
         <option th:each="type :${T(drugstore.ukraine.enums.EducationType).values()}"
                 th:value="${type}" th:text="${type}"></option>
     </select>
     <label> Martial Status</label>
     <select name="MaritalStatus" class="form-input">
-        <option value="" selected>----SELECT MARITAL STATUS----</option>
+        <option value="" selected>----MARITAL STATUS----</option>
         <option th:each="maritalStatus :${T(drugstore.ukraine.enums.MaritalStatus).values()}"
                 th:value="${maritalStatus}" th:text="${maritalStatus}"></option>
     </select>
