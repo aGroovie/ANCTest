@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+<head>
+    <meta charset="UTF-8">
+    <title>User List</title>
+</head>
+<body class="form-body">
+<img class="top-image" th:src="@{https://s.dou.ua/img/static/companies/%D0%90%D0%9D%D0%A6.png}"/>
+<div class="menu">
+    <ul>
+        <li><a sec:authorize="isAnonymous()" href="/registration">Registration</a></li>
+        <li><a sec:authorize="hasRole('ADMIN')" href="/admin"> Admin page</a></li>
+        <li><a sec:authorize="isFullyAuthenticated()" href="/myProfile"> My profile</a></li>
+        <li><a sec:authorize="isAnonymous()" href="/login"> Login to your account </a></li>
+        <li>
+            <form method="post" th:action="@{/logout}">
+                <button sec:authorize="isFullyAuthenticated()" class="logout-button" type="submit"> LOGOUT</button>
+            </form>
+        </li>
+    </ul>
+</div>
+<table class="average-table">
+    <caption> <b> List of Users</b></caption>
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>User First Name</th>
+        <th>User Second name</th>
+        <th>User Middle Name</th>
+        <th>User ITN </th>
+        <th>User Family</th>
+        <th>Delete</th>
+        <th>Show More Info</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user: ${users}">
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.firstName}"></td>
+        <td th:text="${user.secondName}"></td>
+        <td th:text="${user.middleName}"></td>
+        <td th:text="${user.itNumber}"> </td>
+        <td th:text="${user?.family?.familyName} ?: 'No Family'"></td>
+        <td><a th:href="@{deleteUserById/{id}(id=${user.userId})}">Delete</a></td>
+        <td><a th:href="@{editUserWithId/{id}(id=${user.userId})}">Show more info</a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

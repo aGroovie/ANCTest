@@ -1,0 +1,164 @@
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+}
+
+.title {
+    color: grey;
+    font-size: 18px;
+}
+a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+}
+
+button:hover, a:hover {
+    opacity: 0.7;
+}
+
+.form-body .form-input {
+    font-size: 17px;
+    box-sizing: border-box;
+    height: 34px;
+    color: #333333;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    outline: none;
+    text-align: left;
+}
+body {
+    background:linear-gradient(to right, #78a7ba 0%, #385D6C 50%, #78a7ba 99%);
+    width: 75%;
+    margin: auto;
+}
+
+.signup-form {
+    font-family: "Roboto", sans-serif;
+    width:650px;
+    margin:30px auto;
+    background:linear-gradient(to right, #ffffff 0%, #fafafa 50%, #ffffff 99%);
+    border-radius: 10px;
+}
+
+.menu {
+    width: 1068px;
+    background-color: #333;
+    align-content: center;
+}
+
+.menu ul {
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li {
+    display: inline;
+}
+
+.menu ul li a {
+    text-align: center;
+    float: left;
+    text-decoration: sandybrown;
+    color: white;
+    padding: 10.5px 11px;
+    background-color: #333;
+}
+
+.menu ul li a:visited {
+    color: white;
+}
+
+.menu ul li a:hover, .menu ul li .current {
+    color: #fff;
+    background-color: #0b75b2;
+
+}
+
+.top-image {
+    height: 250px;
+    width: 1068px;
+}
+
+.logout-button {
+    position: relative;
+    background-color:  cornflowerblue;
+    margin-left:auto;
+    margin-right:auto;
+    width: 100px;
+    height: 48px;
+}
+
+.average-table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande",  sans-serif;
+    font-size: 15px;
+    max-width: 60%;
+    width: 70%;
+    text-align: center;
+    border-collapse: collapse;
+    border :7px solid #9baff1;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+th {
+    font-size: 13px;
+    font-weight: normal;
+    background: #e8edff;
+    border-right: 1px solid #9baff1;
+    border-left: 1px solid #9baff1;
+    color: #039;
+    padding: 8px;
+}
+td {
+    background: #e8edff;
+    border-right: 1px solid #aabcfe;
+    border-left: 1px solid #aabcfe;
+    color: #669;
+    padding: 8px;
+}
+.form-header {
+    background-color: #EFF0F1;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+}
+
+.horizontal-group .left {
+    float: left;
+    width: 49%;
+}
+
+.center-description {
+    text-align: center;
+}
+
+.card button:hover {
+    opacity: 0.7;
+}
+
+.getButton:active {
+    position: relative;
+    top: 1px;
+}
+
+.main-block {
+    width: 1000px;
+    height: auto;
+    position: relative;
+}
+
+.left-block {
+    width: 500px;
+    margin: auto;
+    display: inline-block;
+}
+
+.right-block {
+    width: 500px;
+    margin: auto;
+    display: inline-block;
+}

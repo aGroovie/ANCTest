@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link th:href="@{css/style.css}" rel="stylesheet" type="text/css">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile</title>
+</head>
+<body class="form-body">
+<img class="top-image" th:src="@{https://s.dou.ua/img/static/companies/%D0%90%D0%9D%D0%A6.png}"/>
+<div class="menu">
+    <ul>
+        <li><a sec:authorize="isAnonymous()" href="/registration">Registration</a></li>
+        <li><a sec:authorize="hasRole('ADMIN')" href="/admin"> Admin page</a></li>
+        <li><a sec:authorize="isAnonymous()" href="/login"> Login to your account </a></li>
+        <li><a sec:authorize="isFullyAuthenticated()" href="/myProfile"> My profile</a></li>
+        <li>
+            <form method="post" th:action="@{/logout}">
+                <button sec:authorize="isFullyAuthenticated()" class="logout-button" type="submit"> LOGOUT</button>
+            </form>
+        </li>
+    </ul>
+</div>
+<div class="card">
+    <th:block>
+        <h1 th:text="${'Welcome,  ' + user.firstName}"></h1>
+        <h1 th:text="${user.secondName}"></h1>
+        <h1 th:text="${user.middleName}"></h1>
+        <h1 th:text="${'Your ITN:  ' + user.itNumber}"></h1>
+        <h1 th:text="${user?.family?.familyName}"></h1>
+    </th:block>
+
+</div>
+
+</body>
+</html>

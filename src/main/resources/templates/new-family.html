@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+<body class="form-body">
+<img class="top-image" th:src="@{https://s.dou.ua/img/static/companies/%D0%90%D0%9D%D0%A6.png}"/>
+<div class="menu">
+    <ul>
+        <li><a sec:authorize="isAnonymous()" href="/registration">Registration</a></li>
+        <li><a sec:authorize="hasRole('ADMIN')" href="/admin"> Admin page</a></li>
+        <li><a sec:authorize="isAnonymous()" href="/login"> Login to your account </a></li>
+        <li><a sec:authorize="isFullyAuthenticated()" href="/myProfile"> My profile</a></li>
+        <li>
+            <form method="post" th:action="@{/logout}">
+                <button sec:authorize="isFullyAuthenticated()" class="logout-button" type="submit"> LOGOUT</button>
+            </form>
+        </li>
+    </ul>
+</div>
+<form class="signup-form" action="/admin/familyRegistration" th:object="${family}" method="post">
+    <h1> Registration </h1>
+    <label for="familyName">Family Name</label>
+    <input type="text" th:field="*{familyName}" id="familyName" class="form-input">
+    <input class="logout-button" type="submit" value="Register">
+</form>
+</div>
+</body>
+</html></title>
+</head>
+<body>
+
+</body>
+</html>

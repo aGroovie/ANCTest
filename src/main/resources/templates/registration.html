@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link th:href="@{css/style.css}" rel="stylesheet" type="text/css">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body class="form-body">
+<img class="top-image" th:src="@{https://s.dou.ua/img/static/companies/%D0%90%D0%9D%D0%A6.png}"/>
+<div class="menu">
+    <ul>
+        <li><a sec:authorize="isAnonymous()" href="/registration">Registration</a></li>
+        <li><a sec:authorize="hasRole('ADMIN')" href="/admin"> Admin page</a></li>
+        <li><a sec:authorize="isAnonymous()" href="/login"> Login to your account </a></li>
+        <li><a sec:authorize="isFullyAuthenticated()" href="/myProfile"> My profile</a></li>
+        <li>
+            <form method="post" th:action="@{/logout}">
+                <button sec:authorize="isFullyAuthenticated()" class="logout-button" type="submit"> LOGOUT</button>
+            </form>
+        </li>
+    </ul>
+</div>
+<form class="signup-form" action="/registration" th:object="${user}" method="post">
+    <div class="form-header">
+        <h1> Registration</h1>
+    </div>
+    <label for="username">Username</label>
+    <input type="text" th:field="*{username}" id="username" class="form-input">
+    <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Such username already exists!</p>
+    <label for="password">Password</label>
+    <input type="password" th:field="*{password}" id="password" class="form-input">
+    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password must be between {min} and {max}</p>
+    <label for="firstName">First name</label>
+    <input type="text" th:field="*{firstName}" id="firstName" class="form-input">
+    <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First name must be between {min} and
+        {max}</p>
+    <label for="secondName">Second name</label>
+    <input type="text" th:field="*{secondName}" id="secondName" class="form-input">
+    <p th:if="${#fields.hasErrors('secondName')}" th:errors="*{secondName}">Second name must be between {min} and
+        {max}</p>
+    <label for="middleName">Middle Name</label>
+    <input type="text" th:field="*{middleName}" id="middleName" class="form-input">
+    <p th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}">Second name must be between {min} and
+        {max}</p>
+    <label for="itNumber">ITN</label>
+    <input type="text" th:field="*{itNumber}" id="itNumber" class="form-input">
+    <p th:if="${#fields.hasErrors('itNumber')}" th:errors="*{itNumber}">Second name must be  {max} length! </p>
+    <label> Education</label>
+    <select name="EducationType" class="form-input">
+        <option value="" selected>----SELECT EDUCATION----</option>
+        <option th:each="type :${T(drugstore.ukraine.enums.EducationType).values()}"
+                th:value="${type}" th:text="${type}"></option>
+    </select>
+    <label> Martial Status</label>
+    <select name="MaritalStatus" class="form-input">
+        <option value="" selected>----SELECT MARITAL STATUS----</option>
+        <option th:each="maritalStatus :${T(drugstore.ukraine.enums.MaritalStatus).values()}"
+                th:value="${maritalStatus}" th:text="${maritalStatus}"></option>
+    </select>
+    <input class="logout-button" type="submit" value="Register">
+</form>
+</div>
+</body>
+</html>

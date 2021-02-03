@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link th:href="@{css/style.css}" rel="stylesheet" type="text/css">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body class="form-body">
+<img class="top-image" th:src="@{https://s.dou.ua/img/static/companies/%D0%90%D0%9D%D0%A6.png}"/>
+<div class="menu">
+    <ul>
+        <li><a sec:authorize="isAnonymous()" href="/registration">Registration</a></li>
+        <li><a sec:authorize="hasRole('ADMIN')" href="/admin"> Admin page</a></li>
+        <li><a sec:authorize="isAnonymous()" href="/login"> Login to your account </a></li>
+        <li><a sec:authorize="isFullyAuthenticated()" href="/myProfile"> My profile</a></li>
+
+        <li>
+            <form method="post" th:action="@{/logout}">
+                <button sec:authorize="isFullyAuthenticated()" class="logout-button" type="submit"> LOGOUT</button>
+            </form>
+        </li>
+    </ul>
+</div>
+
+<form class="signup-form"  th:action="@{/login}" method='POST'>
+    <h3>Enter user name and password:</h3>
+    <table align="center">
+        <tr>
+            <td>User:</td>
+            <td><input type='text' name='username' value='' class="form-input"></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input  type='password' name='password'class="form-input" ></td>
+        </tr>
+        </tr>
+        <tr>
+        <tr>
+            <td><input name="submit" type="submit" value="submit" class="logout-button" /></td>
+        </tr>
+    </table>
+
+</body>
+</html>

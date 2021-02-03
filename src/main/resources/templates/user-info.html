@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet"/>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body class="form-body">
+<img class="top-image" th:src="@{https://s.dou.ua/img/static/companies/%D0%90%D0%9D%D0%A6.png}"/>
+<div class="menu">
+    <ul>
+        <li><a sec:authorize="isAnonymous()" href="/registration">Registration</a></li>
+        <li><a sec:authorize="hasRole('ADMIN')" href="/admin"> Admin page</a></li>
+        <li><a sec:authorize="isAnonymous()" href="/login"> Login to your account </a></li>
+        <li><a sec:authorize="isFullyAuthenticated()" href="/myProfile"> My profile</a></li>
+        <li>
+            <form method="post" th:action="@{/logout}">
+                <button sec:authorize="isFullyAuthenticated()" class="logout-button" type="submit"> LOGOUT</button>
+            </form>
+        </li>
+    </ul>
+</div>
+
+<form сlass="signup-form" th:object="${user}" th:action="@{'/admin/updateUserWithId/' + ${id}}" method="post">
+    <div class="form-header">
+        <h1> Edit User</h1>
+    </div>
+
+    <label for="firstName">First Name</label>
+    <input type="text" th:field="*{firstName}" id="firstName" class="form-input">
+
+    <label for="secondName">Second Name</label>
+    <input type="text" th:field="*{secondName}" id="secondName" class="form-input">
+
+    <label for="middleName">Middle Name</label>
+    <input type="text" th:field="*{middleName}" id="middleName" class="form-input">
+
+    <label for="itNumber">ITN</label>
+    <input type="text" th:field="*{itNumber}" id="itNumber" class="form-input">
+
+    <select name="EducationType" class="form-input">
+        <option value="" selected>----SELECT EDUCATION----</option>
+        <option th:each="type :${T(drugstore.ukraine.enums.EducationType).values()}"
+                th:value="${type}" th:text="${type}"></option>
+    </select>
+    <label> Martial Status</label>
+    <select name="MaritalStatus" class="form-input">
+        <option value="" selected>----SELECT MARITAL STATUS----</option>
+        <option th:each="maritalStatus :${T(drugstore.ukraine.enums.MaritalStatus).values()}"
+        th:value="${maritalStatus}" th:text="${maritalStatus}"></option>
+    </select>
+    <label> Family</label>
+    <select name="familyId" class="form-input">
+        <option value="" selected>----SELECT FAMILY ----</option>
+        <option th:each="family : ${families}"
+                th:value="${family.familyId}"
+                th:text="${family.familyName}">
+        </option>
+    </select>
+    <input class="logout-button" type="submit" value="save">
+
+</form>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+<head>
+    <meta charset="UTF-8">
+    <title>Main page </title>
+</head>
+<body class="form-body">
+<img class="top-image" th:src="@{https://s.dou.ua/img/static/companies/%D0%90%D0%9D%D0%A6.png}"/>
+<div class="menu">
+    <ul>
+        <li><a sec:authorize="isAnonymous()" href="/registration">Registration</a></li>
+        <li><a sec:authorize="hasRole('ADMIN')" href="/admin"> Admin page</a></li>
+        <li><a sec:authorize="isFullyAuthenticated()" href="/myProfile"> My profile</a></li>
+        <li><a sec:authorize="isAnonymous()" href="/login"> Login to your account </a></li>
+        <li>
+            <form method="post" th:action="@{/logout}">
+                <button sec:authorize="isFullyAuthenticated()" class="logout-button" type="submit"> LOGOUT</button>
+            </form>
+        </li>
+    </ul>
+</div>
+    <table class="product-container">
+        <caption><b> List of Users of Current Family</b></caption>
+        <thead>
+        <tr>
+            <th>User First name</th>
+            <th>User Second name</th>
+            <th>User Middle name</th>
+            <th>User ITN</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${family.users}">
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.secondName}"></td>
+            <td th:text="${user.middleName}"></td>
+            <td th:text="${user.itNumber}"> </td>
+            <td><a th:href="@{deleteUserFromFamilyById/{id}(id=${user.userId})}">Delete</a></td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
