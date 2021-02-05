@@ -27,7 +27,7 @@
         <h1 th:text="${user.secondName}"></h1>
         <h1 th:text="${user.middleName}"></h1>
         <h1 th:text="${'Your ITN:  ' + user.itNumber}"></h1>
-        <h1 th:text="${user?.family?.familyName}"></h1>
+        <td th:text="${user?.family?.familyName} ?: 'No Family'"></td>
     </th:block>
 
 </div>

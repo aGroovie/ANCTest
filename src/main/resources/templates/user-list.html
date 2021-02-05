@@ -31,6 +31,7 @@
         <th>User Middle Name</th>
         <th>User ITN </th>
         <th>User Family</th>
+        <th>User Status</th>
         <th>Delete</th>
         <th>Show More Info</th>
     </tr>
@@ -43,6 +44,7 @@
         <td th:text="${user.middleName}"></td>
         <td th:text="${user.itNumber}"> </td>
         <td th:text="${user?.family?.familyName} ?: 'No Family'"></td>
+        <td th:text="${user.status}"></td>
         <td><a th:href="@{deleteUserById/{id}(id=${user.userId})}">Delete</a></td>
         <td><a th:href="@{editUserWithId/{id}(id=${user.userId})}">Show more info</a></td>
     </tr>

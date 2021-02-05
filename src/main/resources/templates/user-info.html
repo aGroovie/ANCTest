@@ -38,7 +38,7 @@
 
     <label for="itNumber">ITN</label>
     <input type="text" th:field="*{itNumber}" id="itNumber" class="form-input">
-
+    <label> Education </label>
     <select name="EducationType" class="form-input">
         <option value="" selected>----SELECT EDUCATION----</option>
         <option th:each="type :${T(drugstore.ukraine.enums.EducationType).values()}"
@@ -46,17 +46,23 @@
     </select>
     <label> Martial Status</label>
     <select name="MaritalStatus" class="form-input">
-        <option value="" selected>----MARITAL STATUS----</option>
+        <option value="" selected>---- MARITAL STATUS ----</option>
         <option th:each="maritalStatus :${T(drugstore.ukraine.enums.MaritalStatus).values()}"
-        th:value="${maritalStatus}" th:text="${maritalStatus}"></option>
+                th:value="${maritalStatus}" th:text="${maritalStatus}"></option>
     </select>
-    <label> Family</label>
+    <label> Family Status</label>
     <select name="familyId" class="form-input">
-        <option value="" selected>----SELECT FAMILY ----</option>
+        <option value="" selected>------ SELECT FAMILY ------</option>
         <option th:each="family : ${families}"
                 th:value="${family.familyId}"
                 th:text="${family.familyName}">
         </option>
+    </select>
+    <label> User Status </label>
+    <select name="Status" class="form-input">
+        <option value="" selected>---- USER STATUS ----</option>
+        <option th:each="status :${T(drugstore.ukraine.enums.Status).values()}"
+                th:value="${status}" th:text="${status}"></option>
     </select>
     <input class="logout-button" type="submit" value="save">
 </form>
